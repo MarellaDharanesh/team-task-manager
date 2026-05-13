@@ -1,0 +1,45 @@
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 30px;
+  font-family: Arial, sans-serif;
+}
+
+.card,
+.task-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 10px;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 15px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.dashboard {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.dashboard div {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  flex: 1;
+}
+
+.delete {
+  background: crimson;
+  color: white;
+}
