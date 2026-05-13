@@ -21,7 +21,7 @@ function App() {
   const pending = tasks.filter((task) => task.status === "Pending").length;
 
   const loginUser = async () => {
-    const res = await axios.post("http://localhost:5000/api/auth/login", {
+    const res = await axios.post("https://team-task-manager-production-5149.up.railway.app/api/auth/login", {
       email,
       password,
     });
@@ -39,17 +39,17 @@ function App() {
   };
 
   const getTasks = async () => {
-    const res = await axios.get("http://localhost:5000/api/tasks");
+    const res = await axios.get("https://team-task-manager-production-5149.up.railway.app/api/tasks");
     setTasks(res.data);
   };
 
   const getProjects = async () => {
-    const res = await axios.get("http://localhost:5000/api/projects");
+    const res = await axios.get("https://team-task-manager-production-5149.up.railway.app/api/projects");
     setProjects(res.data);
   };
 
   const createProject = async () => {
-    await axios.post("http://localhost:5000/api/projects", {
+    await axios.post("https://team-task-manager-production-5149.up.railway.app/api/projects", {
       name: projectName,
       description: projectDescription,
       members: [],
@@ -64,7 +64,7 @@ function App() {
   };
 
   const createTask = async () => {
-    await axios.post("http://localhost:5000/api/tasks", {
+    await axios.post("https://team-task-manager-production-5149.up.railway.app/api/tasks", {
       title,
       description,
       project: selectedProject,
@@ -79,12 +79,12 @@ function App() {
   };
 
   const deleteTask = async (id) => {
-    await axios.delete(`http://localhost:5000/api/tasks/${id}`);
+    await axios.delete(`https://team-task-manager-production-5149.up.railway.app/api/tasks/${id}`);
     getTasks();
   };
 
   const updateTaskStatus = async (id) => {
-    await axios.put(`http://localhost:5000/api/tasks/${id}`, {
+    await axios.put(`https://team-task-manager-production-5149.up.railway.app/api/tasks/${id}`, {
       status: "Completed",
     });
 
