@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 
+const API_URL = "https://team-task-manager-production-5149.up.railway.app";
+
 function App() {
   const [email, setEmail] = useState("dharanesh@gmail.com");
   const [password, setPassword] = useState("123456");
@@ -49,11 +51,22 @@ function App() {
   };
 
   const createProject = async () => {
-    await axios.post("https://team-task-manager-production-5149.up.railway.app/api/projects", {
-      name: projectName,
-      description: projectDescription,
-      members: [],
-    });
+  try {
+    const token = localStorage.getItem("token");
+
+    await axios.post(
+      `${API_URL}/api/projects`,
+      {
+        name: projectName,
+        description: projectDescription,
+        members: [],
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     alert("Project Created");
 
@@ -61,7 +74,12 @@ function App() {
     setProjectDescription("");
 
     getProjects();
-  };
+
+  } catch (error) {
+    alert("Project Creation Failed");
+    console.log(error);
+  }
+};
 
   const createTask = async () => {
     await axios.post("https://team-task-manager-production-5149.up.railway.app/api/tasks", {
